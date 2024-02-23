@@ -40,4 +40,4 @@ abstract class APIConfigBase with Store {
     mastondonInstance = api.mastondonInstance;
     breaveToken = api.breaveToken;
   }
-  }
+}
