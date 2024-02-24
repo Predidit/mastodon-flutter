@@ -7,7 +7,8 @@ class Mastodon {
   late MastodonApi mastodon;
 
   Mastodon() {
-    APIConfig apiConfig = Modular.get<APIConfig>();
+    final APIConfig apiConfig = Modular.get<APIConfig>();
+    apiConfig.init();
     mastodon = MastodonApi(
       instance: apiConfig.mastondonInstance,
       bearerToken: apiConfig.breaveToken,
@@ -18,6 +19,7 @@ class Mastodon {
           maxInSeconds: 5,
         ),
         onExecute: (event) => print(
+          'Using ${apiConfig.mastondonInstance}'
           'Retry after ${event.intervalInSeconds} seconds... '
           '[${event.retryCount} times]',
         ),
